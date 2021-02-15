@@ -21,44 +21,37 @@ function Navbar() {
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
-                <div className="navbar">                     {/*"navbar col-12" before*/}
+                <div className="navbar">
                     <img className="log" src={Logo} />
-                    <button className="btn butt" onClick={() => {
-                      firebase.auth().signOut();
-                      window.location.href = '/'
-                    }}>Log Out</button>
-                    {/*before <FaIcons.FaBars onClick={showSidebar} />*/}
-                    <Link to="#" className="menu-bars">
-
-                    </Link>
+                    <button
+                        className="btn butt"
+                        onClick={() => {
+                            firebase.auth().signOut()
+                            window.location.href = '/'
+                        }}
+                    >
+                        Log Out
+                    </button>
+                    <Link to="#" className="menu-bars"></Link>
                 </div>
 
-                {/*"no mouse before*/}
                 <nav
                     className={!sidebar ? 'nav-menu active' : 'nav-menu'}
-                   /* */ onMouseEnter={() => setIsShown(true)}
+                    onMouseEnter={() => setIsShown(true)}
                     onMouseLeave={() => setIsShown(false)}
                 >
                     <ul className="nav-menu-items ulCl" onClick={showSidebar}>
-                        {/*before   <AiIcons.AiOutlineClose />*/}
-                        <li className="navbar-toggle">
-                            <Link to="#" className="menu-bars">
-
-                            </Link>
-                        </li>
-
                         {SidebarData.map((item, index) => {
                             return (
-                                <li key={index} className={item.cName}
-
-
-                                >
-                                {/*after li key
-                                    before
-                                    onMouseEnter={() => setIsShown(true)}
-                                onMouseLeave={() => setIsShown(false)}*/}
-
-                                    <Link to={item.path}>
+                                <li key={index} className={item.cName}>
+                                    <Link
+                                        onClick={(e) => {
+                                            e.target.style.borderBlockColor =
+                                                'green'
+                                            console.log(e.target.style)
+                                        }}
+                                        to={item.path}
+                                    >
                                         {item.icon}
                                         {isShown && (
                                             <span className="nav-bar-item">

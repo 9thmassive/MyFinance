@@ -1,13 +1,13 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 import './App.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Login from './components/registartion/Login'
 
 import Signup from './components/registartion/Signup'
 import User from './components/Rotation/User'
 import ForgotPassword from './components/registartion/ForgotPassword'
-import Navbar from './components/NavBar_x/Navbar'
+import Navbar from './components/NavBar/Navbar'
 import LeadingPage from './components/leadingPage_proto/LeadingPage'
 import Transaction from './pages/Transaction'
 import Income from './pages/Income'
@@ -24,35 +24,40 @@ import {
 } from 'react-router-dom'
 
 function App() {
-    const [user, setUser] = useState(null);
-    const [income, setIncome] = useState(null);
-    const [expenses, setExpenses] = useState(null);
+    const [user, setUser] = useState(null)
+    const [income, setIncome] = useState(null)
+    const [expenses, setExpenses] = useState(null)
     useEffect(() => {
-      firebase.auth().onAuthStateChanged(firebaseUser => {
+        firebase.auth().onAuthStateChanged((firebaseUser) => {
+            async function manageIncomeExpenses() {
+                const firestoreCurrentCollection = await firebase
+                    .firestore()
+                    .collection('income')
+                    .doc(firebaseUser.uid)
+                    .get()
 
-        async function manageIncomeExpenses() {
-          const firestoreCurrentCollection = await firebase.firestore().collection("income").doc(firebaseUser.uid).get();
-
-          if(firestoreCurrentCollection.exists) {
-            firebase.firestore().collection("income").doc(firebaseUser.uid).set({incomeValue: 0, expensesValue: 0});
-          } else {
-
-          }
-        }
-        setUser(firebaseUser);
-        if(firebaseUser) {
-          manageIncomeExpenses();
-          firebase
-          .firestore()
-          .collection('user')
-          .doc(firebaseUser.uid)
-          .set({
-              displayName: firebaseUser.displayName,
-          })
-        }
-
-      })
-    }, []);
+                if (firestoreCurrentCollection.exists) {
+                    firebase
+                        .firestore()
+                        .collection('income')
+                        .doc(firebaseUser.uid)
+                        .set({ incomeValue: 0, expensesValue: 0 })
+                } else {
+                }
+            }
+            setUser(firebaseUser)
+            if (firebaseUser) {
+                manageIncomeExpenses()
+                firebase
+                    .firestore()
+                    .collection('user')
+                    .doc(firebaseUser.uid)
+                    .set({
+                        displayName: firebaseUser.displayName,
+                    })
+            }
+        })
+    }, [])
 
     return (
         <div className="App">
@@ -77,7 +82,7 @@ function App() {
                         <Signup />
                     </Router>
                     <Route exact path="/login">
-                        <Login  />
+                        <Login />
                     </Route>
                     <Route exact path="/user">
                         <User />
