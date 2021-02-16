@@ -125,3 +125,9 @@ span {
 .nav-bar-item {
     color: white;
 }
+.pos {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    text-decoration: none;
+}
