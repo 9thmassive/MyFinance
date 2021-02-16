@@ -5,7 +5,7 @@ import firebase from 'firebase'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as GrIcons from 'react-icons/gr'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { SidebarData } from './SidebarData'
 import './Navbar.css'
 import { IconContext } from 'react-icons'
@@ -43,14 +43,13 @@ function Navbar() {
                     <ul className="nav-menu-items ulCl" onClick={showSidebar}>
                         {SidebarData.map((item, index) => {
                             return (
-                                <li key={index} className={item.cName}>
-                                    <Link
-                                        onClick={(e) => {
-                                            e.target.style.borderBlockColor =
-                                                'green'
-                                            console.log(e.target.style)
-                                        }}
+                                <>
+                                    <NavLink
+                                        key={index}
+                                        className={`${item.cName} pos`}
                                         to={item.path}
+                                       
+                                        activeClassName="activeLink"
                                     >
                                         {item.icon}
                                         {isShown && (
@@ -58,8 +57,8 @@ function Navbar() {
                                                 {item.title}
                                             </span>
                                         )}
-                                    </Link>
-                                </li>
+                                    </NavLink>
+                                </>
                             )
                         })}
                     </ul>

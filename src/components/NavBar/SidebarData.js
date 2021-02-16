@@ -1,16 +1,16 @@
-import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as GrIcons from 'react-icons/gr';
+import React from 'react'
+import * as FaIcons from 'react-icons/fa'
+import * as AiIcons from 'react-icons/ai'
+import * as IoIcons from 'react-icons/io'
+import * as GrIcons from 'react-icons/gr'
 
-import { FaPiggyBank } from "react-icons/fa";
-import { BsArrowLeftRight } from "react-icons/bs";
+import { FaPiggyBank } from 'react-icons/fa'
+import { BsArrowLeftRight } from 'react-icons/bs'
 
 export const SidebarData = [
     {
-        title: 'Transaction',
-        path: '/transaction',
+        title: 'Dashboard',
+        path: '/dashboard',
         icon: <BsArrowLeftRight />,
         cName: 'nav-text',
     },
@@ -26,7 +26,7 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'nav-text',
     },
-   /*{
+    /*{
         title: 'Team',
         path: '/team',
         icon: <IoIcons.IoMdPeople />,
