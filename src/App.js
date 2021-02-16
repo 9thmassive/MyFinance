@@ -65,7 +65,7 @@ function App() {
                 {user ? <Navbar /> : null}
 
                 <Switch>
-                    <Route path="/ransaction" exact component={Transaction} />
+                    <Route path="/transaction" exact component={Transaction} />
                     <Route path="/income" component={Income} />
                     <Route path="/expenses" component={Expenses} />
                     <Route exact path="/">
