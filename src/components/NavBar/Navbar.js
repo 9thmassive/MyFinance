@@ -45,7 +45,7 @@ function Navbar() {
                             return (
                                 <>
                                     <NavLink
-                                        className={item.cName}
+                                         className={`${item.cName} pos`}
                                         to={item.path}
                                         activeClassName="activeLink"
                                     >
