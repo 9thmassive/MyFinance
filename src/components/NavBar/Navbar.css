@@ -98,9 +98,8 @@ body {
     background-color: #d65a31;
 }
 
-.nav-text a:focus {
+.activeLink {
     background-color: #d65a312a;
-    /* border: solid 2px #d65a31; */
     border-left: solid 8px #d65a31;
 }
 /* .nav-text a:active {
